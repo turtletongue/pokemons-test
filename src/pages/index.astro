@@ -1,38 +1,43 @@
 ---
-// Component Imports
-import Counter from '../components/Counter';
+import { Font } from 'astro:assets';
 
-const someProps = {
-	count: 0,
-};
+import { getPokemons } from '@/api/get-pokemons';
+import { Header } from '@/components/Header';
+import { PokemonsList } from '@/components/PokemonsList';
+import { getImageOptimizations } from '@/utils/get-image-optimizations';
+import { Body, Main } from './index.styled';
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import './index.css';
+
+const pokemons = await getPokemons();
+const imageOptimizations =
+  pokemons.status === 'success'
+    ? await getImageOptimizations(pokemons.data.map(({ imageUrl }) => imageUrl))
+    : {};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<Counter {...someProps} client:visible>
-				<h1>Hello, React!</h1>
-			</Counter>
-		</main>
-	</body>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Покемоны API</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Интерфейс для просмотра нескольких покемонов."
+    />
+    <Font cssVariable="--font-raleway" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <Body>
+    <Main>
+      <Header />
+      <PokemonsList
+        pokemons={pokemons}
+        imageOptimizations={imageOptimizations}
+        client:load
+      />
+    </Main>
+  </Body>
 </html>

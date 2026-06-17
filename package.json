@@ -5,18 +5,37 @@
   "engines": {
     "node": ">=22.12.0"
   },
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint --max-warnings=0",
+    "format": "prettier --write \"src/**/*.tsx\"",
+    "format:check": "prettier --check \"src/**/*.tsx\""
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
+    "@linaria/core": "^8.0.0",
+    "@linaria/react": "^8.0.0",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
+    "@wyw-in-js/vite": "^2.0.2",
     "astro": "^6.4.7",
+    "axios": "^1.18.0",
+    "axios-cache-interceptor": "^1.12.0",
+    "axios-retry": "^4.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.61.1",
+    "astro-eslint-parser": "^1.4.0",
+    "eslint": "^10.5.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "prettier": "^3.8.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3"
   }
 }
