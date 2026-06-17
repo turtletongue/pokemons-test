@@ -5,7 +5,7 @@ import { getPokemons } from '@/api/get-pokemons';
 import { Header } from '@/components/Header';
 import { PokemonsList } from '@/components/PokemonsList';
 import { getImageOptimizations } from '@/utils/get-image-optimizations';
-import { Body, Main } from './index.styled';
+import { Body, ErrorMessage, Main } from './index.styled';
 
 import './index.css';
 
@@ -37,11 +37,20 @@ const imageOptimizations =
   <Body>
     <Main>
       <Header />
-      <PokemonsList
-        pokemons={pokemons}
-        imageOptimizations={imageOptimizations}
-        client:load
-      />
+      {
+        pokemons.status === 'success' ? (
+          <PokemonsList
+            pokemons={pokemons.data}
+            imageOptimizations={imageOptimizations}
+            client:load
+          />
+        ) : (
+          <ErrorMessage>
+            Не удалось загрузить список покемонов. Попробуйте перезагрузить
+            страницу.
+          </ErrorMessage>
+        )
+      }
     </Main>
   </Body>
 </html>

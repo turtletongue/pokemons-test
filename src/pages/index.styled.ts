@@ -18,3 +18,8 @@ export const Main = styled.main`
   flex-direction: column;
   gap: 3.375rem;
 `;
+
+export const ErrorMessage = styled.p`
+  font-weight: 500;
+  font-size: 1.25rem;
+`;

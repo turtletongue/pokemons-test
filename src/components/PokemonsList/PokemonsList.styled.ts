@@ -16,8 +16,3 @@ export const List = styled.ul`
   flex: 1;
   height: fit-content;
 `;
-
-export const ErrorMessage = styled.p`
-  font-weight: 500;
-  font-size: 1.25rem;
-`;
