@@ -12,8 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --max-warnings=0",
-    "format": "prettier --write \"src/**/*.tsx\"",
-    "format:check": "prettier --check \"src/**/*.tsx\""
+    "format": "prettier --write \"src/**/*.astro\" --write \"src/**/*.tsx\"",
+    "format:check": "prettier --check \"src/**/*.astro\" --check \"src/**/*.tsx\""
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
