@@ -15,7 +15,7 @@ export async function getImageOptimizations(
         position: 'center',
       });
 
-      return [url, image.attributes];
+      return [url, { ...image.attributes, src: image.src }];
     }),
   );
 
