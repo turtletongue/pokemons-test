@@ -26,6 +26,7 @@ export const Image = styled.img`
   margin: 0 auto;
   object-fit: cover;
   max-width: 100%;
+  image-rendering: pixelated;
 `;
 
 export const Characteristics = styled.ul`
