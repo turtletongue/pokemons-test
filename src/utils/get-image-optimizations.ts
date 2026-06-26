@@ -8,7 +8,7 @@ export async function getImageOptimizations(
     urls.map(async (url) => {
       const image = await getImage({
         src: url,
-        width: 270,
+        width: 250,
         height: 200,
         format: 'webp',
         fit: 'cover',
